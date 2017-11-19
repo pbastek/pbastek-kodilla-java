@@ -1,6 +1,7 @@
 package com.kodilla.testing.collection;
 
 import org.junit.*;
+import org.junit.Assert;
 import java.util.*;
 
 public class CollectionTestSuite {
@@ -17,53 +18,56 @@ public class CollectionTestSuite {
     }
 
     @Test
-    public void testOddNumbersExterminatorEmptyList(){
+    public void shouldHaveOddNumbersExterminatorEmptyList(){
+
+        System.out.println("Empty list test.");
+
         //Given
         ArrayList<Integer> emptyList = new ArrayList<Integer>();
+        OddNumbersExterminator exterminator = new OddNumbersExterminator();
 
         //When
-        System.out.println("Empty list test.");
-        OddNumbersExterminator exterminator = new OddNumbersExterminator();
         ArrayList<Integer> result = exterminator.exterminate(emptyList);
 
         //Then
         Assert.assertEquals(emptyList,result);
     }
     @Test
-    public void testOddNumbersExterminatorNullList(){
+    public void shouldHaveOddNumbersExterminatorNullList(){
+
+        System.out.println("Null list testing");
+
         //Given
         ArrayList<Integer> nullList = null;
         ArrayList<Integer> emptyList = new ArrayList<Integer>();
+        OddNumbersExterminator exterminator = new OddNumbersExterminator();
 
         //When
-        System.out.println("Null list testing");
-        OddNumbersExterminator exterminator = new OddNumbersExterminator();
         ArrayList<Integer> result = exterminator.exterminate(nullList);
 
         //Then
         Assert.assertEquals(emptyList,result);
 
-        Assert.assertTrue("Kolekcja jest pusta",result!=null);
-        Assert.assertTrue("Kolekcja nie jest pusta",result.isEmpty());
+        Assert.assertNotNull("Collection is empty",result);
+        Assert.assertTrue("Collection is not empty",result.isEmpty());
     }
     @Test
-    public void testOddNumbersExterminatorNormalList (){
+    public void shouldHaveOddNumbersExterminatorNormalList () {
+
+        System.out.println("Regular list testing");
+
         //Given
-        ArrayList<Integer> checkList = new ArrayList<Integer>();
-        ArrayList<Integer> evenList = new ArrayList<Integer>();
-        for(int i=0;i<100;i++){
-            checkList.add(i);
-            if(i%2==0){
-                evenList.add(i);
-            }
-        }
+        ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8));
+        ArrayList<Integer> secondList = new ArrayList<Integer>(Arrays.asList(110, 111, 112, 113, 114, 115, 116, 117, 118));
+
+        OddNumbersExterminator exterminator = new OddNumbersExterminator();
 
         //When
-        System.out.println("Regular list testing");
-        OddNumbersExterminator exterminator = new OddNumbersExterminator();
-        ArrayList<Integer> result = exterminator.exterminate(checkList);
+        ArrayList<Integer> evenList = exterminator.exterminate(list);
+        ArrayList<Integer> evenSecondList = exterminator.exterminate(secondList);
 
         //Then
-        Assert.assertEquals(evenList,result);
+        Assert.assertEquals(evenList, new ArrayList<Integer>(Arrays.asList(0, 2, 4, 6, 8)));
+        Assert.assertEquals(evenSecondList, new ArrayList<Integer>(Arrays.asList(110, 112, 114, 116, 118)));
     }
 }
