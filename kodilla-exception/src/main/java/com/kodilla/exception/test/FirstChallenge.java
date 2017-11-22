@@ -17,18 +17,11 @@ public class FirstChallenge {
 
         FirstChallenge firstChallenge = new FirstChallenge();
 
-        double result = Double.MAX_VALUE;
         try {
-            result = firstChallenge.divide(3, 0);
+            double result = firstChallenge.divide(3, 0);
             System.out.println(result);
         } catch (ArithmeticException e) {
-            System.out.println("It is not possible to divide by zero! " + e);
-        } finally {
-
-            if (result == Double.MAX_VALUE) {
-                result = 0;
-            }
-            System.out.println(result);
+            System.out.println("Attention! The division by zero is not allowed!");
         }
     }
 }
