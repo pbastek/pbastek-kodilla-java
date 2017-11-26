@@ -1,6 +1,8 @@
 package com.kodilla.stream.beautifier;
 
-public class PoemBeautifier {
+import java.lang.String
+
+public class PoemBeautifier implements PoemDecorator {
     public String beautify(String text, PoemDecorator decorator) {
         String result = decorator.decorate(text);
         System.out.println(result);
