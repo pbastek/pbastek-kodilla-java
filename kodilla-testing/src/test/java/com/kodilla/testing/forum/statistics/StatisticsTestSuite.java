@@ -13,17 +13,17 @@ public class StatisticsTestSuite {
 
     @BeforeClass
     public static void beforeAllTests() {
-        System.out.println("Start of all tests"); //DLACZEGO TO SIĘ POJAWIA NA KOŃCU?
+        System.out.println("Tests starting ...");
     }
 
     @AfterClass
     public static void afterAllTests() {
-        System.out.println("All tests finished");
+        System.out.println("Tests are finished");
     }
 
     @Before
     public void beforeTest() {
-        System.out.println("Executing test " + testCount);
+        System.out.println("Test executed " + testCount);
         testCount++;
     }
 
@@ -40,7 +40,7 @@ public class StatisticsTestSuite {
     @Test
     public void testNoPosts() {
         //Given
-        ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jan Nowak", "Katarzyna Kowalska"},
+        ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jacek Marzec", "Agnieszka Maj"},
                 0, 5);
         //When
         double postsPerUser = calculator.getPostsPerUser();
@@ -55,7 +55,7 @@ public class StatisticsTestSuite {
     @Test
     public void test1000Posts() {
         //Given
-        ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jan Nowak", "Katarzyna Kowalska"},
+        ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jacek Marzec", "Agnieszka Maj"},
                 1000, 125);
         //When
         double postsPerUser = calculator.getPostsPerUser();
@@ -70,7 +70,7 @@ public class StatisticsTestSuite {
     @Test
     public void testNoComments() {
         //Given
-        ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jan Nowak", "Katarzyna Kowalska"},
+        ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jacek Marzec", "Agnieszka Maj"},
                 1000, 0);
         //When
         double postsPerUser = calculator.getPostsPerUser();
@@ -85,7 +85,7 @@ public class StatisticsTestSuite {
     @Test
     public void testFewerCommentsThanPosts() {
         //Given
-        ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jan Nowak", "Katarzyna Kowalska"},
+        ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jacek Marzec", "Agnieszka Maj"},
                 1000, 2);
         //When
         double postsPerUser = calculator.getPostsPerUser();
@@ -100,7 +100,7 @@ public class StatisticsTestSuite {
     @Test
     public void testMoreCommentsThanPosts() {
         //Given
-        ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jan Nowak", "Katarzyna Kowalska"},
+        ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jacek Marzec", "Agnieszka Maj"},
                 4, 1000);
         //When
         double postsPerUser = calculator.getPostsPerUser();
@@ -145,5 +145,4 @@ public class StatisticsTestSuite {
         Assert.assertEquals(0.25, commentsPerUser, 0.0);
         Assert.assertEquals(0.5, commentsPerPost, 0.0);
     }
-
 }

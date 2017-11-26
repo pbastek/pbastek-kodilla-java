@@ -15,13 +15,10 @@ public class ForumStatisticsCalculator {
     }
 
     public void calculateAdvStatistics() {
-        usersCount = statistics.usersNames().size(); // I assume the list cannot be null
+        usersCount = statistics.usersNames().size();
         postsCount = statistics.postsCount();
         commentsCount = statistics.commentsCount();
-        /* I will not go into questions whether it is possible to have posts or comments without users
-         * or comments without posts. I assume it's possible and in that case some averages will be set
-         * artificially to 0
-         */
+
         if (usersCount == 0) {
             postsPerUser = 0;
             commentsPerUser = 0.0;
