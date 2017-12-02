@@ -13,11 +13,13 @@ public class StatisticsTestSuite {
 
     @BeforeClass
     public static void beforeAllTests() {
+
         System.out.println("Tests starting ...");
     }
 
     @AfterClass
     public static void afterAllTests() {
+
         System.out.println("Tests are finished");
     }
 
@@ -38,14 +40,17 @@ public class StatisticsTestSuite {
     }
 
     @Test
-    public void testNoPosts() {
+    public void should_returnNoPosts() {
+
         //Given
         ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jacek Marzec", "Agnieszka Maj"},
                 0, 5);
+
         //When
         double postsPerUser = calculator.getPostsPerUser();
         double commentsPerUser = calculator.getCommentsPerUser();
         double commentsPerPost = calculator.getCommentsPerPost();
+
         //Then
         Assert.assertEquals(0.0, postsPerUser, 0.0);
         Assert.assertEquals(2.5, commentsPerUser, 0.0);
@@ -53,14 +58,17 @@ public class StatisticsTestSuite {
     }
 
     @Test
-    public void test1000Posts() {
+    public void should_return1000Posts() {
+
         //Given
         ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jacek Marzec", "Agnieszka Maj"},
                 1000, 125);
+
         //When
         double postsPerUser = calculator.getPostsPerUser();
         double commentsPerUser = calculator.getCommentsPerUser();
         double commentsPerPost = calculator.getCommentsPerPost();
+
         //Then
         Assert.assertEquals(500.0, postsPerUser, 0.0);
         Assert.assertEquals(62.5, commentsPerUser, 0.0);
@@ -68,14 +76,17 @@ public class StatisticsTestSuite {
     }
 
     @Test
-    public void testNoComments() {
+    public void should_returnNoComments() {
+
         //Given
         ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jacek Marzec", "Agnieszka Maj"},
                 1000, 0);
+
         //When
         double postsPerUser = calculator.getPostsPerUser();
         double commentsPerUser = calculator.getCommentsPerUser();
         double commentsPerPost = calculator.getCommentsPerPost();
+
         //Then
         Assert.assertEquals(500.0, postsPerUser, 0.0);
         Assert.assertEquals(0.0, commentsPerUser, 0.0);
@@ -83,14 +94,17 @@ public class StatisticsTestSuite {
     }
 
     @Test
-    public void testFewerCommentsThanPosts() {
+    public void should_returnFewerCommentsThanPosts() {
+
         //Given
         ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jacek Marzec", "Agnieszka Maj"},
                 1000, 2);
+
         //When
         double postsPerUser = calculator.getPostsPerUser();
         double commentsPerUser = calculator.getCommentsPerUser();
         double commentsPerPost = calculator.getCommentsPerPost();
+
         //Then
         Assert.assertEquals(500.0, postsPerUser, 0.0);
         Assert.assertEquals(1.0, commentsPerUser, 0.0);
@@ -98,7 +112,8 @@ public class StatisticsTestSuite {
     }
 
     @Test
-    public void testMoreCommentsThanPosts() {
+    public void should_returnMoreCommentsThanPosts() {
+
         //Given
         ForumStatisticsCalculator calculator = mockedCalculator(new String[]{"Jacek Marzec", "Agnieszka Maj"},
                 4, 1000);
@@ -106,6 +121,7 @@ public class StatisticsTestSuite {
         double postsPerUser = calculator.getPostsPerUser();
         double commentsPerUser = calculator.getCommentsPerUser();
         double commentsPerPost = calculator.getCommentsPerPost();
+
         //Then
         Assert.assertEquals(2.0, postsPerUser, 0.0);
         Assert.assertEquals(500.0, commentsPerUser, 0.0);
@@ -113,14 +129,17 @@ public class StatisticsTestSuite {
     }
 
     @Test
-    public void testNoUsers() {
+    public void should_returnNoUsers() {
+
         //Given
         ForumStatisticsCalculator calculator = mockedCalculator(new String[]{},
                 123, 123);
+
         //When
         double postsPerUser = calculator.getPostsPerUser();
         double commentsPerUser = calculator.getCommentsPerUser();
         double commentsPerPost = calculator.getCommentsPerPost();
+
         //Then
         Assert.assertEquals(0.0, postsPerUser, 0.0);
         Assert.assertEquals(0.0, commentsPerUser, 0.0);
@@ -128,7 +147,8 @@ public class StatisticsTestSuite {
     }
 
     @Test
-    public void test100Users() {
+    public void should_return100Users() {
+
         //Given
         String[] users = new String[100];
         for(int i=0; i<users.length; i++) {
@@ -136,10 +156,12 @@ public class StatisticsTestSuite {
         }
         ForumStatisticsCalculator calculator = mockedCalculator(users,
                 50, 25);
+
         //When
         double postsPerUser = calculator.getPostsPerUser();
         double commentsPerUser = calculator.getCommentsPerUser();
         double commentsPerPost = calculator.getCommentsPerPost();
+
         //Then
         Assert.assertEquals(0.5, postsPerUser, 0.0);
         Assert.assertEquals(0.25, commentsPerUser, 0.0);

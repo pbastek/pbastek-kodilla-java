@@ -1,5 +1,8 @@
 package com.kodilla.testing.forum.statistics;
 
+import lombok.Getter;
+
+@Getter
 public class ForumStatisticsCalculator {
 
     Statistics statistics;
@@ -11,6 +14,7 @@ public class ForumStatisticsCalculator {
     double commentsPerPost;
 
     public ForumStatisticsCalculator(Statistics statistics) {
+
         this.statistics = statistics;
     }
 
@@ -42,15 +46,4 @@ public class ForumStatisticsCalculator {
         System.out.println("Average number of comments per post: " + commentsPerPost);
     }
 
-    public double getPostsPerUser() {
-        return postsPerUser;
-    }
-
-    public double getCommentsPerUser() {
-        return commentsPerUser;
-    }
-
-    public double getCommentsPerPost() {
-        return commentsPerPost;
-    }
 }
