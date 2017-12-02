@@ -1,14 +1,11 @@
 package com.kodilla.testing.library;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -24,7 +21,7 @@ public class BookDirectoryTestSuite {
     }
 
     @Test
-    public void testListBooksWithConditionsReturnList() {
+    public void should_returnBooksWithConditionsReturnList() {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
@@ -48,7 +45,7 @@ public class BookDirectoryTestSuite {
     }
 
     @Test
-    public void testListBooksWithConditionMoreThan20() {
+    public void should_returnListBooksWithConditionMoreThan20() {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
@@ -57,15 +54,15 @@ public class BookDirectoryTestSuite {
         List<Book> resultListOf40Books = generateListOfNBooks(40);
         when(libraryDatabaseMock.listBooksWithCondition(anyString()))
                 .thenReturn(resultListOf15Books);
-        when(libraryDatabaseMock.listBooksWithCondition("ZeroBooks"))
+        when(libraryDatabaseMock.listBooksWithCondition("Zero Books"))
                 .thenReturn(resultListOf0Books);
-        when(libraryDatabaseMock.listBooksWithCondition("FourtyBooks"))
+        when(libraryDatabaseMock.listBooksWithCondition("Fourty Books"))
                 .thenReturn(resultListOf40Books);
 
         // When
-        List<Book> theListOfBooks0 = bookLibrary.listBooksWithCondition("ZeroBooks");
+        List<Book> theListOfBooks0 = bookLibrary.listBooksWithCondition("Zero Books");
         List<Book> theListOfBooks15 = bookLibrary.listBooksWithCondition("Any title");
-        List<Book> theListOfBooks40 = bookLibrary.listBooksWithCondition("FourtyBooks");
+        List<Book> theListOfBooks40 = bookLibrary.listBooksWithCondition("Fourty Books");
         // Then
 
         assertEquals(0, theListOfBooks0.size());
@@ -74,7 +71,7 @@ public class BookDirectoryTestSuite {
     }
 
     @Test
-    public void testListBooksWithConditionFragmentShorterThan3() {
+    public void should_returnListBooksWithConditionFragmentShorterThan3() {
         // Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
@@ -91,7 +88,7 @@ public class BookDirectoryTestSuite {
     }
 
     @Test
-    public void testWhenUserHas0BorrowedBooks() {
+    public void should_returnUserHasBorrowedZeroBooks() {
         //Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
@@ -106,11 +103,10 @@ public class BookDirectoryTestSuite {
         //then
         assertEquals(0, theListOfBooks.size());
 
-
     }
 
     @Test
-    public void testWhenUserHas1BorrowedBooks() {
+    public void should_returnUserHasBorrowedOneBook() {
         //Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
@@ -125,11 +121,10 @@ public class BookDirectoryTestSuite {
         //then
         assertEquals(1, theListOfBooks.size());
 
-
     }
 
     @Test
-    public void testWhenUserHas5BorrowedBooks() {
+    public void should_returnUserHasBorrowedFiveBooks() {
         //Given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);

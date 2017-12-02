@@ -25,5 +25,4 @@ public class BookLibrary {
         return new ArrayList<>(libraryDatabase.listBooksInHandsOf(libraryUser));
     }
 
-
 }
