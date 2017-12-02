@@ -41,9 +41,8 @@ public class ForumStatisticsCalculator {
         System.out.println("Number of users: " + usersCount);
         System.out.println("Number of posts: " + postsCount);
         System.out.println("Number of comments: " + commentsCount);
-        System.out.println("Average number of posts per user: " + postsPerUser);
-        System.out.println("Average number of comments per user: " + commentsCount);
+        System.out.println("Average number of posts per single user: " + postsPerUser);
+        System.out.println("Average number of comments per single user: " + commentsCount);
         System.out.println("Average number of comments per post: " + commentsPerPost);
     }
-
 }

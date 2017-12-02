@@ -23,12 +23,6 @@ public class StatisticsTestSuite {
         System.out.println("Tests are finished");
     }
 
-    @Before
-    public void beforeTest() {
-        System.out.println("Test executed " + testCount);
-        testCount++;
-    }
-
     private ForumStatisticsCalculator mockedCalculator(String[] usersNames, int postsCount, int commentsCount) {
         Statistics statisticsMock = mock(Statistics.class);
         when(statisticsMock.postsCount()).thenReturn(postsCount);
