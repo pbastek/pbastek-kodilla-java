@@ -8,13 +8,12 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode
 @ToString
-public class Book {
+final class Book {
+    private final String title;
+    private final String author;
+    private final LocalDate publicationDate;
 
-    private String title;
-    private String author;
-    private LocalDate publicationDate;
-
-    public Book(final String title, final String author, final LocalDate publicationDate) {
+    Book(final String title, final String author, final LocalDate publicationDate) {
         this.title = title;
         this.author = author;
         this.publicationDate = publicationDate;
