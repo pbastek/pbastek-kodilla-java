@@ -21,102 +21,48 @@ public class CompanyDaoTestSuite {
     EmployeeDao employeeDao;
 
     @Test
-    public void testSaveManyToMany() {
+    public void testSaveManyToMany(){
         //Given
         Employee johnSmith = new Employee("John", "Smith");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
         Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
 
-        Company softwareMax = new Company("Software Max");
-        Company dataMasters = new Company("Data Masters");
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaesters = new Company("Data Maesters");
         Company greyMatter = new Company("Grey Matter");
 
-        softwareMax.getEmployees().add(johnSmith);
-        dataMasters.getEmployees().add(stephanieClarckson);
-        dataMasters.getEmployees().add(lindaKovalsky);
+        softwareMachine.getEmployees().add(johnSmith);
+        dataMaesters.getEmployees().add(stephanieClarckson);
+        dataMaesters.getEmployees().add(lindaKovalsky);
         greyMatter.getEmployees().add(johnSmith);
         greyMatter.getEmployees().add(lindaKovalsky);
 
-        johnSmith.getCompanies().add(softwareMax);
+        johnSmith.getCompanies().add(softwareMachine);
         johnSmith.getCompanies().add(greyMatter);
-        stephanieClarckson.getCompanies().add(dataMasters);
-        lindaKovalsky.getCompanies().add(dataMasters);
+        stephanieClarckson.getCompanies().add(dataMaesters);
+        lindaKovalsky.getCompanies().add(dataMaesters);
         lindaKovalsky.getCompanies().add(greyMatter);
 
         //When
-        companyDao.save(softwareMax);
-        int softwareMaxId = softwareMax.getId();
-        companyDao.save(dataMasters);
-        int dataMastersId = dataMasters.getId();
+        companyDao.save(softwareMachine);
+        int softwareMachineId = softwareMachine.getId();
+        companyDao.save(dataMaesters);
+        int dataMaestersId = dataMaesters.getId();
         companyDao.save(greyMatter);
         int greyMatterId = greyMatter.getId();
 
         //Then
-        Assert.assertNotEquals(0, softwareMaxId);
-        Assert.assertNotEquals(0, dataMastersId);
+        Assert.assertNotEquals(0, softwareMachineId);
+        Assert.assertNotEquals(0, dataMaestersId);
         Assert.assertNotEquals(0, greyMatterId);
 
         //CleanUp
-        try {
-            companyDao.delete(softwareMaxId);
-            companyDao.delete(dataMastersId);
-            companyDao.delete(greyMatterId);
-        } catch (Exception e) {
-            //do nothing
-        }
-    }
-
-    @Test
-    public void testLastnameSearch() {
-        //Given
-        Employee johnSmith = new Employee("John", "Smith");
-        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
-        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
-
-        employeeDao.save(johnSmith);
-        employeeDao.save(stephanieClarckson);
-        employeeDao.save(lindaKovalsky);
-
-        //When
-        List<Employee> employeesWithSmithLastname = employeeDao.findUsersWithLastname("Smith");
-
-        //Then
-        Assert.assertEquals(1, employeesWithSmithLastname.size());
-
-        //CleanUp
-        try {
-            employeeDao.delete(johnSmith);
-            employeeDao.delete(stephanieClarckson);
-            employeeDao.delete(lindaKovalsky);
-        } catch (Exception e) {
-            //do nothing
-        }
-    }
-
-    @Test
-    public void testSearchCompaniesStartWith() {
-        //Given
-        Company softwareMax = new Company("Software Max");
-        Company softwareMasters = new Company("Software Masters");
-        Company greyMatter = new Company("Grey Matter");
-
-        companyDao.save(softwareMax);
-        companyDao.save(softwareMasters);
-        companyDao.save(greyMatter);
-
-        //When
-        List<Company> companiesStarWith = companyDao.findCompanyStartsWith("Sof");
-
-        //Then
-        Assert.assertEquals(2, companiesStarWith.size());
-
-        //CleanUp
-        try {
-            companyDao.delete(softwareMax);
-            companyDao.delete(softwareMasters);
-            companyDao.delete(greyMatter);
-        } catch (Exception e) {
-            //do nothing
-        }
+                try {
+                companyDao.delete(softwareMachineId);
+                companyDao.delete(dataMaestersId);
+                companyDao.delete(greyMatterId);
+            } catch (Exception e) {
+                //do nothing
+            }
     }
 }

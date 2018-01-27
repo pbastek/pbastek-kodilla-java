@@ -1,11 +1,8 @@
-package com.kodilla.hibernate.invoice.product;
-
-import com.kodilla.hibernate.invoice.item.Item;
+package com.kodilla.hibernate.invoice.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 @Entity

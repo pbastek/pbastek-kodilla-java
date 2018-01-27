@@ -1,6 +1,6 @@
 package com.kodilla.hibernate.invoice.dao;
 
-import com.kodilla.hibernate.invoice.Invoice;
+import com.kodilla.hibernate.invoice.domain.Invoice;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

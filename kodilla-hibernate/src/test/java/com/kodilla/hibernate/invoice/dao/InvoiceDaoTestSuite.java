@@ -1,8 +1,8 @@
 package com.kodilla.hibernate.invoice.dao;
 
-import com.kodilla.hibernate.invoice.Invoice;
-import com.kodilla.hibernate.invoice.item.Item;
-import com.kodilla.hibernate.invoice.product.Product;
+import com.kodilla.hibernate.invoice.domain.Invoice;
+import com.kodilla.hibernate.invoice.domain.Item;
+import com.kodilla.hibernate.invoice.domain.Product;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -58,6 +58,7 @@ public class InvoiceDaoTestSuite {
 
         //Then
         Assert.assertEquals(4, itemsCount);
+
         //CleanUp
         invoiceDao.delete(invoice.getId());
     }
