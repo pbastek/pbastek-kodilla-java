@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class AirlineRepositoryData implements RepositoryService {
 
-    public Set<Flight> loadAirlineData(AirlineData airlaneData) {
-        return airlaneData.getFlightMap();
+    public Set<Flight> loadAirlineData(AirlineData airlineData) {
+        return airlineData.getFlightMap();
     }
 }

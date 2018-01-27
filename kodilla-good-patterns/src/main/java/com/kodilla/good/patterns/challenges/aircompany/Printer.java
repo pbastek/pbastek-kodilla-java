@@ -10,7 +10,6 @@ public class Printer implements PrintService {
     DateTimeFormatter dataTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public void printFlightDeparture(ToPrintFlightsDto toPrintFlightsDto) {
-        System.out.println("******************************");
         System.out.println("All flights FROM " + toPrintFlightsDto.getAirportNameDeparture());
         System.out.printf("%17s|  %15s| %15s| %20s| %20s|\n", "Flight number", "Departure", "Arrival", "ToD", "ToA");
 
@@ -23,7 +22,6 @@ public class Printer implements PrintService {
     }
 
     public void printFlightArrival(ToPrintFlightsDto toPrintFlightsDto) {
-        System.out.println("******************************");
         System.out.println("All flights TO " + toPrintFlightsDto.getAirportNameDeparture());
         System.out.printf("%17s|  %15s| %15s| %20s| %20s|\n", "Flight number", "Departure", "Arrival", "ToD", "ToA");
 
@@ -36,7 +34,6 @@ public class Printer implements PrintService {
     }
 
     public void printFlightThrough(ToPrintFlightsDto toPrintFlightsDto) {
-        System.out.println("******************************");
         System.out.println("All flights FROM " + toPrintFlightsDto.getAirportNameDeparture() +
                 " THROUGH " + toPrintFlightsDto.getAirportNameThrough() +
                 " TO " + toPrintFlightsDto.getAirportNameArrival());

@@ -2,7 +2,7 @@ package com.kodilla.good.patterns.challenges.aircompany;
 
 public class FlightFindRequestRetriever {
 
-    AirlineData airlineData = new AirlineData("LOT");
+    AirlineData airlineData = new AirlineData("Lufthansa");
 
     public FindFlightRequest retrieveDeparture() {
 
