@@ -2,19 +2,19 @@ package com.kodilla.patterns2.decorator.pizza;
 
 import java.math.BigDecimal;
 
-public class Chicken extends AbstractPizzaDecorator {
+public class OnionDecorator extends AbstractPizzaDecorator {
 
-    public Chicken(PizzaOrder pizzaOrder) {
+    public OnionDecorator(PizzaOrder pizzaOrder) {
         super(pizzaOrder);
     }
 
     @Override
     public BigDecimal getCost() {
-        return super.getCost().add(new BigDecimal(3));
+        return super.getCost().add(new BigDecimal(2));
     }
 
     @Override
     public String getIngredients() {
-        return super.getIngredients() + ", chicken";
+        return super.getIngredients() + ", onion";
     }
 }

@@ -30,7 +30,7 @@ public class PizzaOrderTestSuite {
     @Test
     public void should_returnPizzaExtraCheeseCost() {
         //Given
-        PizzaOrder pizzaOrder = new ExtraCheese(new BasicPizzaOrder());
+        PizzaOrder pizzaOrder = new ExtraCheeseDecorator(new BasicPizzaOrder());
         //When
         BigDecimal cost = pizzaOrder.getCost();
         //Then
@@ -40,7 +40,7 @@ public class PizzaOrderTestSuite {
     @Test
     public void should_returnPizzaExtraCheeseIngredients() {
         //Given
-        PizzaOrder pizzaOrder = new ExtraCheese(new BasicPizzaOrder());
+        PizzaOrder pizzaOrder = new ExtraCheeseDecorator(new BasicPizzaOrder());
         //When
         String ingredients = pizzaOrder.getIngredients();
         //Then
@@ -50,7 +50,7 @@ public class PizzaOrderTestSuite {
     @Test
     public void should_returnPizzaDoubleExtraCheeseCost() {
         //Given
-        PizzaOrder pizzaOrder = new ExtraCheese(new ExtraCheese(new BasicPizzaOrder()));
+        PizzaOrder pizzaOrder = new ExtraCheeseDecorator(new ExtraCheeseDecorator(new BasicPizzaOrder()));
         //When
         BigDecimal cost = pizzaOrder.getCost();
         //Then
@@ -60,7 +60,7 @@ public class PizzaOrderTestSuite {
     @Test
     public void should_returnPizzaDoubleExtraCheeseIngredients() {
         //Given
-        PizzaOrder pizzaOrder = new ExtraCheese(new ExtraCheese(new BasicPizzaOrder()));
+        PizzaOrder pizzaOrder = new ExtraCheeseDecorator(new ExtraCheeseDecorator(new BasicPizzaOrder()));
         //When
         String ingredients = pizzaOrder.getIngredients();
         //Then
@@ -70,7 +70,7 @@ public class PizzaOrderTestSuite {
     @Test
     public void should_returnPizzaOnionHamCornMushroomsCost() {
         //Given
-        PizzaOrder pizzaOrder = new Onion(new Ham(new Corn(new Mushrooms(new BasicPizzaOrder()))));
+        PizzaOrder pizzaOrder = new OnionDecorator(new HamDecorator(new CornDecorator(new MushroomsDecorator(new BasicPizzaOrder()))));
         //When
         BigDecimal cost = pizzaOrder.getCost();
         //Then
@@ -80,7 +80,7 @@ public class PizzaOrderTestSuite {
     @Test
     public void should_returnPizzaOnionHamCornMushroomsIngredients() {
         //Given
-        PizzaOrder pizzaOrder = new Onion(new Ham(new Corn(new Mushrooms(new BasicPizzaOrder()))));
+        PizzaOrder pizzaOrder = new OnionDecorator(new HamDecorator(new CornDecorator(new MushroomsDecorator(new BasicPizzaOrder()))));
         //When
         String ingredients = pizzaOrder.getIngredients();
         //Then
