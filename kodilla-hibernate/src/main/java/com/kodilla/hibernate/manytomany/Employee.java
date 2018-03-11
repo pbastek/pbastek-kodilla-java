@@ -4,10 +4,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.annotations.NamedQuery;
 
 @NamedQuery(
-        name = "Employee.findUsersWithLastname",
-        query = "FROM Employee WHERE lastname = :LASTNAME"
+        name = "Employee.findEmployeesWithNameLike",
+        query = "FROM Employee WHERE lastname LIKE :LASTNAME"
 )
 
 @Entity
@@ -46,12 +47,7 @@ public class Employee {
         return lastname;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "JOIN_COMPANY_EMPLOYEE",
-            joinColumns = {@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")}
-    )
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "employees")
     public List<Company> getCompanies() {
         return companies;
     }

@@ -4,6 +4,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import org.hibernate.annotations.NamedNativeQuery;
+
+@NamedNativeQuery(
+        name = "Company.findCompaniesWithNameLike",
+        query = "SELECT * FROM companies WHERE company_name LIKE :NAME",
+        resultClass = Company.class
+)
 
 @Entity
 @Table(name = "COMPANIES")
@@ -34,7 +41,7 @@ public class Company {
         return name;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies")
+    @ManyToMany(cascade = CascadeType.ALL)
     public List<Employee> getEmployees() {
         return employees;
     }
@@ -51,3 +58,4 @@ public class Company {
         this.employees = employees;
     }
 }
+
