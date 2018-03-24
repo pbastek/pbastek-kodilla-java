@@ -66,7 +66,7 @@ public class ShopServiceTestSuite {
     }
 
     @Test
-    public void should_returnShopFacade() throws Exception {
+    public void should_returnShopFacade() {
         OrderDto order = new OrderDto();
         order.addItem(new ItemDto(10L, 2));
         order.addItem(new ItemDto(216L, 1));
