@@ -4,16 +4,15 @@ import com.kodilla.hibernate.manytomany.Company;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional
-@Repository
 public interface CompanyDao extends CrudRepository<Company, Integer> {
 
-    @Query
+    @Query(value = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME,1,3) = :NAME_START", nativeQuery = true)
+    List<Company> findCompanyStartsWith(@Param("NAME_START") String nameStart);
+
+    @Query(value = "FROM Company WHERE name LIKE %:NAME%")
     List<Company> findCompaniesWithNameLike(@Param("NAME") String name);
 }
 
