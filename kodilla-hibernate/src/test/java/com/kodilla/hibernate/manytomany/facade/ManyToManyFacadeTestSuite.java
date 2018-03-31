@@ -19,7 +19,7 @@ public class ManyToManyFacadeTestSuite {
     ManyToManyFacade facade;
 
     @Test
-    public void testFindCompaniesWithNameLike(){
+    public void testFindCompaniesWithNameLike() throws Exception{
         //Given
         facade.addCompany(new CompanyDto("ABC International"));
         facade.addCompany(new CompanyDto("Software ABCxx"));
@@ -37,7 +37,7 @@ public class ManyToManyFacadeTestSuite {
     }
 
     @Test
-    public void testFindEmployeesWithNameLike(){
+    public void testFindEmployeesWithNameLike() throws Exception{
         //Given
         facade.addEmployee(new EmployeeDto("Jan", "Kowalski"));
         facade.addEmployee(new EmployeeDto("Robert", "Nowak"));

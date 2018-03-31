@@ -12,6 +12,9 @@ import java.util.List;
 public interface CompanyDao extends CrudRepository<Company, Integer> {
 
     @Query(value = "SELECT * FROM COMPANIES WHERE SUBSTRING(COMPANY_NAME,1,3) = :NAME_START", nativeQuery = true)
+    List<Company> findCompanyStartsWith(@Param("NAME_START") String nameStart);
+
+    @Query(value = "FROM Company WHERE name LIKE %:NAME%")
     List<Company> findCompaniesWithNameLike(@Param("NAME") String name);
 }
 
