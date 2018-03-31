@@ -14,31 +14,31 @@ public class ManyToManyFacade {
 
     private CompanyDao companyDao;
     private EmployeeDao employeeDao;
-    private Mapper mapper;
+    private FacadeMapper facadeMapper;
 
-    public ManyToManyFacade(CompanyDao companyDao, EmployeeDao employeeDao, Mapper mapper) {
+    public ManyToManyFacade(CompanyDao companyDao, EmployeeDao employeeDao, FacadeMapper facadeMapper) {
         this.companyDao = companyDao;
         this.employeeDao = employeeDao;
-        this.mapper = mapper;
+        this.facadeMapper = facadeMapper;
     }
 
     public List<CompanyDto> findCompaniesWithNameLike(String name) {
         List<Company> newCompany = companyDao.findCompaniesWithNameLike(name);
-        return mapper.companiesToCompanyDtos(newCompany);
+        return facadeMapper.companiesToCompanyDtos(newCompany);
     }
 
     public List<EmployeeDto> findEmployeesWithNameLike(String name) {
         List<Employee> newEmployee = employeeDao.findEmployeesWithNameLike(name);
-        return mapper.employeesToEmployeeDtos(newEmployee);
+        return facadeMapper.employeesToEmployeeDtos(newEmployee);
     }
 
     public void addCompany(CompanyDto company){
-        Company newCompany = mapper.companyDtoToCompany(company);
+        Company newCompany = facadeMapper.companyDtoToCompany(company);
         companyDao.save(newCompany);
     }
 
     public void addEmployee(EmployeeDto employee){
-        Employee newEmployee = mapper.employeeDtoToEmployee(employee);
+        Employee newEmployee = facadeMapper.employeeDtoToEmployee(employee);
         employeeDao.save(newEmployee);
     }
 }

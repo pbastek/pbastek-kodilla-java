@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class Mapper {
+public class FacadeMapper {
 
     public Employee employeeDtoToEmployee(EmployeeDto employeeDto) {
         return new Employee(employeeDto.getFirstName(), employeeDto.getLastName());
